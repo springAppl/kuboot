@@ -15,14 +15,4 @@ public class KubootApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(KubootApplication.class, args);
 	}
-
-
-//	@Bean
-//	public LocaleResolver localeResolver() {
-//		SessionLocaleResolver slr = new SessionLocaleResolver();
-//		slr.setDefaultLocale(Locale.CHINA);
-//		return slr;
-//	}
-
-
 }
