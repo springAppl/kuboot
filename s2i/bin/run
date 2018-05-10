@@ -6,5 +6,5 @@
 # For more information see the documentation:
 #	https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
 #
-echo "starting application"
-exec java -jar ./target/kuboot.jar
+echo "starting application   *.jar"
+exec java -jar ./target/*.jar

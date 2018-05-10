@@ -9,11 +9,15 @@ spec:
         name: spring
     spec:
       containers:
-        - name: "helloworld"
-          image: "docker-registry.default.svc:5000/kuboot/spring@sha256:2d7a3e4309ddd8a91e0df967367a8ca3ec131688b3d008025122aae8ecba14d9"
+        - name: spring
+          image: "docker-registry.default.svc:5000/kuboot/spring@sha256:7aebcb59b113a0baf2aeddcd780170fc559284644448cdb5e3097dc21b0affc8"
           ports:
             - containerPort: 8080
-              protocol: "TCP"
+              protocol: TCP
+            - containerPort: 8443
+              protocol: TCP
+            - containerPort: 8778
+              protocol: TCP
   selector:
     name: spring
   strategy:
