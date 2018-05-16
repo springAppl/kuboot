@@ -1,6 +1,8 @@
 server:
   port: 8080
-
+logging:
+  level:
+    root: debug
 spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver

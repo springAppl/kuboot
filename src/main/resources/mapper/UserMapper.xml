@@ -28,10 +28,17 @@
                 id = #{id}
             </if>
             <if test="name != null">
-                name = #{name}
+                and name = #{name}
+            </if>
+            <if test="mobile != null">
+                and mobile = #{mobile}
             </if>
         </where>
     </select>
+
+    <insert id="create" parameterType="User" keyProperty="id" keyColumn="id" useGeneratedKeys="true">
+        insert into <include refid="table"/>(name, mobile, password) values(#{name}, #{mobile}, #{password})
+    </insert>
 
 
 </mapper>

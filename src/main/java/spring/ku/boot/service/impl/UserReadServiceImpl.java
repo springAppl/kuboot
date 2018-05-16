@@ -2,6 +2,7 @@ package spring.ku.boot.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import spring.ku.boot.criteria.UserCriteria;
 import spring.ku.boot.dao.UserDAO;
 import spring.ku.boot.model.User;
@@ -43,5 +44,33 @@ public class UserReadServiceImpl implements UserReadService{
     @Override
     public List<User> paging(UserCriteria userCriteria) {
         return userDAO.paging(userCriteria);
+    }
+
+    @Override
+    public User findByUser(User user) {
+        return userDAO.findByUser(user);
+    }
+
+    @Override
+    public Boolean exist(User user) {
+        if (StringUtils.hasText(user.getName()) && existName(user.getName())) {
+            return true;
+        }
+        if (StringUtils.hasText(user.getMobile()) && existMobile(user.getMobile())) {
+            return true;
+        }
+        return false;
+    }
+
+    private Boolean existName(String account) {
+        User query = new User();
+        query.setName(account);
+        return Objects.nonNull(userDAO.findByUser(query));
+    }
+
+    private Boolean existMobile(String mobile){
+        User query = new User();
+        query.setMobile(mobile);
+        return Objects.nonNull(userDAO.findByUser(query));
     }
 }

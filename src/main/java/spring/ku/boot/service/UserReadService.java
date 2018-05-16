@@ -22,4 +22,8 @@ public interface UserReadService {
 
 
     List<User> paging(UserCriteria userCriteria);
+
+    User findByUser(User user);
+
+    Boolean exist(User user);
 }
