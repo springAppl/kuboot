@@ -12,3 +12,5 @@ spring:
 mybatis:
   mapperLocations: classpath:mapper/*.xml
   typeAliasesPackage: spring.ku.boot.model
+
+STORAGE_PATH: /Users/shaofeiliu/images/

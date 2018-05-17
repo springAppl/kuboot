@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Article">
+    <sql id="table">article</sql>
+
+    <resultMap id="articleResultMap" type="Article">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="tagsJSON" column="tags_json"/>
+    </resultMap>
+
+    <select id="findByID" parameterType="long" resultMap="articleResultMap">
+        select * from <include refid="table"/> where id = #{id}
+    </select>
+
+    <select id="paging" parameterType="Article" resultType="Article">
+        select * from <include refid="table"/>
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="title != null">
+               and title = #{title}
+            </if>
+        </where>
+        limit #{offset}, #{limit}
+    </select>
+
+    <select id="findByArticle" parameterType="Article" resultType="Article">
+        select * from <include refid="table"/>
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="title != null">
+                name = #{title}
+            </if>
+        </where>
+    </select>
+
+    <insert id="create" useGeneratedKeys="true" keyProperty="id">
+        insert into <include refid="table"/> (title, content, tags_json) values(#{title}, #{content}, #{tagsJSON})
+    </insert>
+
+    <update id="update" >
+        update <include refid="table"/>
+        <set>
+            <if test="title != null">
+                title = #{title},
+            </if>
+            <if test="content != null">
+                content = #{content},
+            </if>
+            <if test="tagsJSON != null"> tags_json = #{tagsJSON}</if>
+        </set>
+        where id = #{id}
+    </update>
+</mapper>
