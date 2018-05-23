@@ -18,3 +18,4 @@ mybatis:
   typeAliasesPackage: spring.ku.boot.model
 
 STORAGE_PATH: /Users/shaofeiliu/images/
+https://spring.io/blog/2013/11/01/exception-handling-in-spring-mvc
