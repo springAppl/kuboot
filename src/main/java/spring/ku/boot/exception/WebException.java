@@ -1,10 +1,5 @@
 package spring.ku.boot.exception;
 
-import lombok.Data;
-import lombok.ToString;
-
-@Data
-@ToString
 public class WebException extends RuntimeException {
 
     private Integer code;

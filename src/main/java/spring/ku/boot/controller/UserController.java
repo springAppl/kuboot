@@ -86,4 +86,17 @@ public class UserController {
     public void logout(HttpServletRequest request){
         request.getSession().invalidate();
     }
+
+
+    @GetMapping("/test")
+    public User test(){
+        User user = new User();
+        user.setId(1L);
+        return user;
+    }
+
+    @GetMapping("/error")
+    public User error(){
+        throw new WebException("error");
+    }
 }
