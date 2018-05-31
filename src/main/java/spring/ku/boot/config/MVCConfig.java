@@ -4,7 +4,6 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
-import spring.ku.boot.resolver.TranslateExceptionResolver;
 
 @Configuration
 public class MVCConfig{
@@ -14,10 +13,5 @@ public class MVCConfig{
         source.setBasename("messages");
         source.setUseCodeAsDefaultMessage(true);
         return source;
-    }
-
-    @Bean
-    public TranslateExceptionResolver translateExceptionResolver(){
-        return new TranslateExceptionResolver();
     }
 }
