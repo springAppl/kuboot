@@ -1,6 +1,7 @@
 package spring.ku.boot.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import spring.ku.boot.exception.WebException;
@@ -11,7 +12,6 @@ import spring.ku.boot.service.ImageWriteService;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/image")
@@ -23,17 +23,26 @@ public class ImageController {
     @Autowired
     private ImageReadService imageReadService;
 
+    @Value("${protocol:http://}")
+    private String protocol;
+
+    @Value("${image.host:www.news.com}")
+    private String host;
+
+    @Value("${image.bucket:/api/image/}")
+    private String bucket;
+
 
     @PostMapping
-    public Long singleFileUpload(@RequestParam("file") MultipartFile file) {
-        String uuid = UUID.randomUUID().toString();
+    public String singleFileUpload(@RequestParam("file") MultipartFile file) {
         Image image = new Image();
         try {
             image.setData(file.getBytes());
         } catch (IOException e) {
             throw new WebException("image_destroy", 400);
         }
-        return imageWriteService.create(image);
+        Long imageID = imageWriteService.create(image);
+        return protocol + host + bucket + imageID;
     }
 
     @GetMapping("/{id}")

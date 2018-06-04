@@ -87,16 +87,10 @@ public class UserController {
         request.getSession().invalidate();
     }
 
-
     @GetMapping("/test")
-    public User test(){
-        User user = new User();
-        user.setId(1L);
-        return user;
-    }
-
-    @GetMapping("/error")
-    public User error(){
-        throw new WebException("error");
+    public void test(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        System.out.println(session.getAttribute("id"));
+        return;
     }
 }
