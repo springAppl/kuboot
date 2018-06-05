@@ -20,6 +20,6 @@ public class RestExceptionHandler {
         ExceptionEntity exceptionEntity = new ExceptionEntity();
         exceptionEntity.setStatus(e.getCode());
         exceptionEntity.setMessage(messageSource.getMessage(e.getMessage(),null, e.getMessage(), request.getLocale()));
-        return new ResponseEntity(exceptionEntity,HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity(exceptionEntity, HttpStatus.valueOf(e.getCode()));
     }
 }

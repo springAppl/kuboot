@@ -86,11 +86,4 @@ public class UserController {
     public void logout(HttpServletRequest request){
         request.getSession().invalidate();
     }
-
-    @GetMapping("/test")
-    public void test(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        System.out.println(session.getAttribute("id"));
-        return;
-    }
 }
