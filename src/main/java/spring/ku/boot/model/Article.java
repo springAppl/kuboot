@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Slf4j
@@ -54,4 +55,13 @@ public class Article implements Serializable {
             throw new IllegalArgumentException("");
         }
     }
+
+    @Setter
+    private LocalDateTime createAt;
+
+    @Setter
+    private LocalDateTime updateAt;
+
+    @Setter
+    private Long userID;
 }

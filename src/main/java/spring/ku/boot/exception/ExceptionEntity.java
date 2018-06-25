@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class ExceptionEntity {
     private String message;
-    private Integer status;
+    private Integer httpCode;
 }

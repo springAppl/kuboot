@@ -3,6 +3,7 @@ package spring.ku.boot.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import spring.ku.boot.criteria.SimplePage;
 import spring.ku.boot.criteria.UserCriteria;
 import spring.ku.boot.dao.UserDAO;
 import spring.ku.boot.model.User;
@@ -42,7 +43,7 @@ public class UserReadServiceImpl implements UserReadService{
     }
 
     @Override
-    public List<User> paging(UserCriteria userCriteria) {
+    public SimplePage<User> paging(UserCriteria userCriteria) {
         return userDAO.paging(userCriteria);
     }
 

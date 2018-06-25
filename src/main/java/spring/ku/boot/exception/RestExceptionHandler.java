@@ -18,7 +18,7 @@ public class RestExceptionHandler {
     @ExceptionHandler(WebException.class)
     protected ResponseEntity handleInvalidRequest(WebException e, WebRequest request) {
         ExceptionEntity exceptionEntity = new ExceptionEntity();
-        exceptionEntity.setStatus(e.getCode());
+        exceptionEntity.setHttpCode(e.getCode());
         exceptionEntity.setMessage(messageSource.getMessage(e.getMessage(),null, e.getMessage(), request.getLocale()));
         return new ResponseEntity(exceptionEntity, HttpStatus.valueOf(e.getCode()));
     }

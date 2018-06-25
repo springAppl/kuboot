@@ -21,6 +21,18 @@
         limit #{offset}, #{limit}
     </select>
 
+    <select id="count" resultType="int">
+        select count(id) from <include refid="table"/>
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="name != null">
+                and name = #{name}
+            </if>
+        </where>
+    </select>
+
     <select id="findByUser" parameterType="User" resultType="User">
         select * from <include refid="table"/>
         <where>

@@ -12,21 +12,34 @@
         <result property="tagsJSON" column="tags_json"/>
     </resultMap>
 
-    <select id="findByID" parameterType="long" resultMap="articleResultMap">
+    <select id="findByID" resultMap="articleResultMap">
         select * from <include refid="table"/> where id = #{id}
     </select>
 
-    <select id="paging" parameterType="Article" resultType="Article">
+    <select id="paging" resultMap="articleResultMap">
         select * from <include refid="table"/>
         <where>
             <if test="id != null">
                 id = #{id}
             </if>
             <if test="title != null">
-               and title = #{title}
+                and title = like CONCAT('%',#{title},'%'#{title}
             </if>
         </where>
+        order by create_at desc
         limit #{offset}, #{limit}
+    </select>
+
+    <select id="count" resultType="int">
+        select count(id) from <include refid="table"/>
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="title != null">
+                and title = like CONCAT('%',#{title},'%'#{title}
+            </if>
+        </where>
     </select>
 
     <select id="findByArticle" parameterType="Article" resultType="Article">
@@ -42,7 +55,7 @@
     </select>
 
     <insert id="create" useGeneratedKeys="true" keyProperty="id">
-        insert into <include refid="table"/> (title, content, tags_json) values(#{title}, #{content}, #{tagsJSON})
+        insert into <include refid="table"/> (title, content, tags_json, create_at, update_at, user_id) values(#{title}, #{content}, #{tagsJSON}， now(), now(), #{userID})
     </insert>
 
     <update id="update" >

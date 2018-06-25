@@ -3,6 +3,7 @@ package spring.ku.boot.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import spring.ku.boot.criteria.SimplePage;
 import spring.ku.boot.criteria.UserCriteria;
 import spring.ku.boot.exception.WebException;
 import spring.ku.boot.model.User;
@@ -28,7 +29,7 @@ public class UserController {
 
 
     @GetMapping("/paging")
-    public List<User> paging(){
+    public SimplePage<User> paging(){
         return userReadService.paging(new UserCriteria());
     }
 

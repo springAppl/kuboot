@@ -3,6 +3,8 @@ package spring.ku.boot.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import spring.ku.boot.criteria.ArticleCriteria;
+import spring.ku.boot.criteria.SimplePage;
 import spring.ku.boot.dao.ArticleDAO;
 import spring.ku.boot.model.Article;
 import spring.ku.boot.service.ArticleReadService;
@@ -21,5 +23,10 @@ public class ArticleReadServiceImpl implements ArticleReadService {
     @Override
     public Article findByID(Long id) {
         return articleDAO.findByID(id);
+    }
+
+    @Override
+    public SimplePage<Article> paging(ArticleCriteria articleCriteria) {
+        return articleDAO.paging(articleCriteria);
     }
 }

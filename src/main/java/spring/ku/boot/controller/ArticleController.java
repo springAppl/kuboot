@@ -5,6 +5,10 @@ import org.springframework.web.bind.annotation.*;
 import spring.ku.boot.model.Article;
 import spring.ku.boot.service.ArticleReadService;
 import spring.ku.boot.service.ArticleWriteService;
+import spring.ku.boot.util.UserUtil;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/article")
@@ -23,7 +27,13 @@ public class ArticleController {
     }
 
     @PutMapping
-    public void put(@RequestBody Article article){
+    public void put(@RequestBody Article article, HttpServletRequest request){
+        // auth check
+        Long id = UserUtil.current(request);
+        if (Objects.isNull(article.getId())) {
+            article.setUserID(id);
+            articleWriteService.update(article);
+        }
         articleWriteService.update(article);
     }
 

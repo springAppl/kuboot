@@ -3,6 +3,7 @@ package spring.ku.boot.dao;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import spring.ku.boot.criteria.SimplePage;
 import sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl;
 
 import java.util.List;
@@ -40,8 +41,10 @@ public class BaseDao<T> {
         return typeName + query;
     }
 
-    public List<T> paging(PageCriteria pageCriteria){
-        return sqlSession.selectList(mapperName("paging"), pageCriteria);
+    public SimplePage<T> paging(PageCriteria pageCriteria){
+        List<T> list = sqlSession.selectList(mapperName("paging"), pageCriteria);
+        Integer total = sqlSession.selectOne(mapperName("count"), pageCriteria);
+        return new SimplePage<>(total, list );
     }
 
     public SqlSession getSqlSession() {

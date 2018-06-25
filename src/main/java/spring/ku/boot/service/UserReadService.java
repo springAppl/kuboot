@@ -2,6 +2,7 @@ package spring.ku.boot.service;
 
 
 
+import spring.ku.boot.criteria.SimplePage;
 import spring.ku.boot.criteria.UserCriteria;
 import spring.ku.boot.model.User;
 
@@ -21,7 +22,7 @@ public interface UserReadService {
     User findByID(Long id);
 
 
-    List<User> paging(UserCriteria userCriteria);
+    SimplePage<User> paging(UserCriteria userCriteria);
 
     User findByUser(User user);
 
