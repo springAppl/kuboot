@@ -4,4 +4,4 @@ ADD ./target/*.jar  /app/
 EXPOSE 8080
 
 # TODO: Set the default CMD for the image
-CMD ["java", "-jar", "/app/kuboot-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "--spring.profiles.active=openshift", "/app/kuboot-0.0.1-SNAPSHOT.jar"]
