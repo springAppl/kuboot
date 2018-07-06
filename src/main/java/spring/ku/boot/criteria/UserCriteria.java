@@ -22,6 +22,8 @@ public class UserCriteria extends PageCriteria implements Serializable {
     private String name;
 
 
-
+    public UserCriteria(Integer pageNo, Integer pageSize){
+        super(pageNo, pageSize);
+    }
 
 }

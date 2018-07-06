@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.ToString;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * @author lsf
@@ -17,7 +18,19 @@ public abstract class PageCriteria implements Serializable {
 
     private Integer limit = 20;
 
-    public void page(Integer pageNo, Integer pageSize) {
+    private Integer pageNo;
+
+    private Integer pageSize;
+
+    public PageCriteria(Integer pageNo, Integer pageSize) {
+        if(Objects.isNull(pageNo)) {
+            pageNo = 1;
+        }
+        this.pageNo = pageNo;
+        if (Objects.isNull(pageSize)) {
+            pageSize = 20;
+        }
+        this.pageSize = pageSize;
         PageUtil pageUtil = new PageUtil(pageNo, pageSize);
         offset = pageUtil.getOffset();
         limit = pageUtil.getLimit();

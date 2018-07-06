@@ -10,5 +10,7 @@ import java.util.List;
 public class SimplePage<T> {
     Integer total;
 
+    Integer pages;
+
     List<T> elements;
 }

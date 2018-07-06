@@ -13,7 +13,6 @@ import spring.ku.boot.util.UserUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 import java.util.Objects;
 
 @RequestMapping("/api/user")
@@ -29,8 +28,9 @@ public class UserController {
 
 
     @GetMapping("/paging")
-    public SimplePage<User> paging(){
-        return userReadService.paging(new UserCriteria());
+    public SimplePage<User> paging(Integer pageNo, Integer pageSize){
+        SimplePage<User> page = userReadService.paging(new UserCriteria(pageNo, pageSize));
+        return page;
     }
 
     @GetMapping("/login")
@@ -58,7 +58,7 @@ public class UserController {
 
     @GetMapping("/info")
     public User info(HttpServletRequest request){
-        return info(UserUtil.current(request));
+        return info(UserUtil.current().getId());
     }
 
     private User info(Long id) {
@@ -86,5 +86,10 @@ public class UserController {
     @PostMapping("/logout")
     public void logout(HttpServletRequest request){
         request.getSession().invalidate();
+    }
+
+    @GetMapping("/detail")
+    public User details(){
+        return UserUtil.current();
     }
 }

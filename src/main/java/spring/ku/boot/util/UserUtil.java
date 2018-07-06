@@ -1,6 +1,8 @@
 package spring.ku.boot.util;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import spring.ku.boot.exception.WebException;
+import spring.ku.boot.model.User;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,5 +19,9 @@ public class UserUtil {
             throw new WebException(401);
         }
         return (Long) id;
+    }
+
+    public static User current(){
+        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 }

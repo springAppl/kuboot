@@ -44,7 +44,8 @@ public class BaseDao<T> {
     public SimplePage<T> paging(PageCriteria pageCriteria){
         List<T> list = sqlSession.selectList(mapperName("paging"), pageCriteria);
         Integer total = sqlSession.selectOne(mapperName("count"), pageCriteria);
-        return new SimplePage<>(total, list );
+        Integer pages = total/pageCriteria.getPageSize() + (total % pageCriteria.getPageSize() > 0 ? 1:0);
+        return new SimplePage<>(total, pages, list );
     }
 
     public SqlSession getSqlSession() {

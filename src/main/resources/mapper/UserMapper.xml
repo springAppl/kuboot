@@ -4,11 +4,22 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="User">
     <sql id="table">user</sql>
-    <select id="findByID" parameterType="long" resultType="User">
+
+    <resultMap id="userMap" type="User">
+        <id column="id" property="id"/>
+        <result property="name" column="name"/>
+        <result property="password" column="password"/>
+        <result property="mobile" column="mobile"/>
+        <result property="roleJson" column="role_json"/>
+    </resultMap>
+
+
+
+    <select id="findByID" parameterType="long" resultMap="userMap">
         select * from <include refid="table"/> where id = #{id}
     </select>
 
-    <select id="paging" parameterType="User" resultType="User">
+    <select id="paging" resultMap="userMap">
         select * from <include refid="table"/>
         <where>
             <if test="id != null">
@@ -33,7 +44,7 @@
         </where>
     </select>
 
-    <select id="findByUser" parameterType="User" resultType="User">
+    <select id="findByUser" resultMap="userMap">
         select * from <include refid="table"/>
         <where>
             <if test="id != null">
@@ -49,8 +60,7 @@
     </select>
 
     <insert id="create" parameterType="User" keyProperty="id" keyColumn="id" useGeneratedKeys="true">
-        insert into <include refid="table"/>(name, mobile, password) values(#{name}, #{mobile}, #{password})
+        insert into <include refid="table"/>(name, mobile, password, role_json)
+        values(#{name}, #{mobile}, #{password}, #{roleJson})
     </insert>
-
-
 </mapper>

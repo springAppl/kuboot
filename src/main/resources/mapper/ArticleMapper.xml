@@ -26,7 +26,7 @@
                 and title = like CONCAT('%',#{title},'%'#{title}
             </if>
         </where>
-        order by create_at desc
+        order by id desc
         limit #{offset}, #{limit}
     </select>
 
@@ -55,7 +55,7 @@
     </select>
 
     <insert id="create" useGeneratedKeys="true" keyProperty="id">
-        insert into <include refid="table"/> (title, content, tags_json, create_at, update_at, user_id) values(#{title}, #{content}, #{tagsJSON}， now(), now(), #{userID})
+        insert into <include refid="table"/> (title, content, tags_json, create_at, update_at, user_id) values(#{title}, #{content}, #{tagsJSON}, now(), now(), #{userID})
     </insert>
 
     <update id="update" >
