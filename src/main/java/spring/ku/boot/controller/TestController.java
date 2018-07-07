@@ -11,9 +11,17 @@ public class TestController {
     @Value("${envName}")
     private String name;
 
+    @Value("${spring.datasource.url}")
+    private String url;
+
 
     @GetMapping("/name")
     public String name(){
         return name;
+    }
+
+    @GetMapping("/url")
+    public String url(){
+        return url;
     }
 }

@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://db4free.net:3306/kuboot?useUnicode=true&amp&characterEncoding=utf-8
+    username: kuboot
+    password: kubootdb
+  redis:
+    host: redis-11337.c15.us-east-1-4.ec2.cloud.redislabs.com
+    port: 11337
+    password: SkATeKN2jF17lGJj6w9dx5M89ilmcfGw
+
+envName: openshift

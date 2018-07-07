@@ -1,0 +1,23 @@
+version: '3.5'
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: somewordpress
+      MYSQL_DATABASE: luna
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - 13306:3306
+  web:
+    image: springapp/kuboot
+    restart: always
+    ports:
+      - 9090:8080
+    depends_on:
+      - db
+    environment:
+      MYSQL_DB_HOST: db:3306
+      MYSQL_DB_USER: wordpress
+      MYSQL_DB_PASSWORD: wordpress

@@ -14,13 +14,13 @@ spring:
       namespace: afsession
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/luna?useUnicode=true&amp&characterEncoding=utf-8
-    username: root
-    password: root
+    url: jdbc:mysql://db/luna?useUnicode=true&amp&characterEncoding=utf-8
+    username: wordpress
+    password: wordpress
   redis:
     host: 127.0.0.1
     port: 6379
 mybatis:
   mapperLocations: classpath:mapper/*.xml
   typeAliasesPackage: spring.ku.boot.model
-envName: basic
+envName: basic2
