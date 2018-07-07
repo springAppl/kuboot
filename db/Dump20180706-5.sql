@@ -16,6 +16,39 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `article`
+--
+use luna;
+DROP TABLE IF EXISTS `article`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `article` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) DEFAULT '',
+  `content` text,
+  `tags_json` text,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `image`
+--
+
+DROP TABLE IF EXISTS `image`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `image` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `data` mediumblob,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `user`
 --
 
@@ -26,20 +59,11 @@ CREATE TABLE `user` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
-  `mobile` varchar(45) NOT NULL,
+  `mobile` varchar(45) DEFAULT NULL,
+  `role_json` varchar(1024) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `user`
---
-
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (8,'liu','123456','123456'),(9,'neo','123456','123456'),(10,'lee','123456','123456');
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -50,4 +74,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-04 20:31:12
+-- Dump completed on 2018-07-06 18:22:41
