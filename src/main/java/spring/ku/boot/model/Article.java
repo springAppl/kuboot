@@ -3,10 +3,12 @@ package spring.ku.boot.model;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
+import springfox.documentation.service.ApiListing;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -29,6 +31,9 @@ public class Article implements Serializable {
 
     @Setter
     private String content;
+
+    @Setter
+    private Integer status;
 
     private List<String> tags;
 

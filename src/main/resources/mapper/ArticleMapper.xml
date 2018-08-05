@@ -71,4 +71,8 @@
         </set>
         where id = #{id}
     </update>
+
+    <delete id="deleteByID" >
+        delete <include refid="table"/> where id = #{id}
+    </delete>
 </mapper>

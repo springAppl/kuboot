@@ -1,9 +1,11 @@
 package spring.ku.boot.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import spring.ku.boot.criteria.ArticleCriteria;
 import spring.ku.boot.criteria.SimplePage;
+import spring.ku.boot.exception.WebException;
 import spring.ku.boot.model.Article;
 import spring.ku.boot.service.ArticleReadService;
 import spring.ku.boot.service.ArticleWriteService;
@@ -22,12 +24,14 @@ public class ArticleController {
     @Autowired
     private ArticleReadService articleReadService;
 
+    @PreAuthorize("isAuthenticated()")
     @PostMapping
     public Long post(@RequestBody Article article){
         article.setUserID(UserUtil.current().getId());
         return articleWriteService.create(article);
     }
 
+    @PreAuthorize("isAuthenticated()")
     @PutMapping
     public Article put(@RequestBody Article article){
         // auth check
@@ -41,6 +45,18 @@ public class ArticleController {
         }
         return get(article.getId());
     }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable("id") Long id) {
+        Article article = articleReadService.findByID(id);
+        if (Objects.isNull(article)) {
+            throw new WebException("article.not.exist");
+        }
+        if (Objects.equals(UserUtil.current().getId(), article.getUserID()))
+        // 逻辑删除
+        articleWriteService.delete(id);
+    }
+
 
     @GetMapping("{id}")
     public Article get(@PathVariable("id") Long id){

@@ -48,6 +48,10 @@ public class BaseDao<T> {
         return new SimplePage<>(total, pages, list );
     }
 
+    public void deleteByID(Long id){
+        sqlSession.delete("deleteByID", id);
+    }
+
     public SqlSession getSqlSession() {
         return sqlSession;
     }

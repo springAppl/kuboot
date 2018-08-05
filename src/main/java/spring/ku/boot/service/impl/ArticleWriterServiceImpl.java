@@ -30,4 +30,9 @@ public class ArticleWriterServiceImpl implements ArticleWriteService {
     public void update(Article article) {
         articleDAO.update(article);
     }
+
+    @Override
+    public void delete(Long id) {
+        articleDAO.deleteByID(id);
+    }
 }

@@ -2,6 +2,8 @@ version: '3.5'
 services:
   db:
     image: mysql:5.7
+    volumes:
+      - ~/var/mysql:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: somewordpress
       MYSQL_DATABASE: luna
@@ -11,13 +13,20 @@ services:
     ports:
       - 13306:3306
   web:
-    image: springapp/kuboot
+    image: springapp/kuboot:latest
     restart: always
     ports:
       - 9090:8080
     depends_on:
       - db
+      - redis
     environment:
       MYSQL_DB_HOST: db:3306
       MYSQL_DB_USER: wordpress
       MYSQL_DB_PASSWORD: wordpress
+  redis:
+    image: redis:4.0
+    environment:
+      REDIS_SERVER_HOST: '%'
+    ports:
+    - 16379:6379
