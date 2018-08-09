@@ -31,6 +31,6 @@ public class CategoryController {
 
     @GetMapping("/index/page")
     public List<Category> indexPage(){
-        return (List<Category>) categoryRedisTemplate.boundValueOps("index:page:category").get();
+        return (List<Category>) categoryRedisTemplate.boundValueOps("index:page:categories").get();
     }
 }
