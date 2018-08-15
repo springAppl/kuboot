@@ -42,7 +42,8 @@ public class ImageController {
             throw new WebException("image_destroy", 400);
         }
         Long imageID = imageWriteService.create(image);
-        return protocol + host + bucket + imageID;
+        //return protocol + host + bucket + imageID;
+        return bucket + imageID;
     }
 
     @GetMapping("/{id}")
