@@ -24,3 +24,6 @@ envName: basic2
 security:
   basic:
     enabled: false
+
+image:
+  host: kuboot.cn

@@ -26,7 +26,7 @@ public class ImageController {
     @Value("${protocol:http://}")
     private String protocol;
 
-    @Value("${image.host:www.news.com}")
+    @Value("${image.host:127.0.0.1:8080}")
     private String host;
 
     @Value("${image.bucket:/api/image/}")
@@ -42,8 +42,7 @@ public class ImageController {
             throw new WebException("image_destroy", 400);
         }
         Long imageID = imageWriteService.create(image);
-        //return protocol + host + bucket + imageID;
-        return bucket + imageID;
+        return protocol + host + bucket + imageID;
     }
 
     @GetMapping("/{id}")
