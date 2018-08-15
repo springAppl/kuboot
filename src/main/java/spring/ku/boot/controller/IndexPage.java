@@ -49,4 +49,9 @@ public class IndexPage {
     public void update(@RequestBody String str){
         stringRedisTemplate.opsForValue().set("index", str);
     }
+
+    @PostMapping("/id")
+    public Long componentID(){
+        return stringRedisTemplate.boundValueOps("index:components:id").increment(1)+2;
+    }
 }
