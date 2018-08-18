@@ -26,4 +26,4 @@ security:
     enabled: false
 
 image:
-  host: kuboot.cn
+  host: 119.29.105.18
