@@ -35,9 +35,9 @@ public class IndexPage {
 
     private String readFromFile() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(resource.getInputStream()));
-        StringBuffer message=new StringBuffer();
+        StringBuffer message = new StringBuffer();
         String line = null;
-        while((line = br.readLine()) != null) {
+        while ((line = br.readLine()) != null) {
             message.append(line);
         }
         String defaultString = message.toString();
@@ -46,12 +46,19 @@ public class IndexPage {
 
 
     @PutMapping
-    public void update(@RequestBody String str){
+    public void update(@RequestBody String str) {
         stringRedisTemplate.opsForValue().set("index", str);
     }
 
     @PostMapping("/id")
-    public Long componentID(){
-        return stringRedisTemplate.boundValueOps("index:components:id").increment(1)+2;
+    public Long componentID() {
+        return stringRedisTemplate.boundValueOps("index:components:id").increment(1) + 2;
+    }
+
+    @PutMapping("/template")
+    public Object template() throws IOException {
+        String index = readFromFile();
+        stringRedisTemplate.opsForValue().set("index", index);
+        return index;
     }
 }
