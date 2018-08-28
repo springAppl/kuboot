@@ -16,11 +16,8 @@ spring:
     host: 127.0.0.1
     port: 6379
   session:
-    store-type: none
+    store-type: REDIS
 mybatis:
   mapperLocations: classpath:mapper/*.xml
   typeAliasesPackage: spring.ku.boot.model
 envName: basic2
-security:
-  basic:
-    enabled: false
