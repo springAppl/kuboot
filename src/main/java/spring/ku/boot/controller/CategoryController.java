@@ -1,6 +1,7 @@
 package spring.ku.boot.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 import spring.ku.boot.model.Category;
@@ -16,6 +17,7 @@ public class CategoryController {
     private CategoryWriteService categoryWriteService;
 
     @Autowired
+    @Qualifier("redisTemplate")
     private RedisTemplate<Object, Object> categoryRedisTemplate;
 
 

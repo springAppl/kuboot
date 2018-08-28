@@ -8,7 +8,7 @@ logging:
     root: debug
 spring:
   session:
-    store-type: none
+    store-type: REDIS
   datasource:
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://db/luna?useUnicode=true&amp&characterEncoding=utf-8
@@ -21,9 +21,6 @@ mybatis:
   mapperLocations: classpath:mapper/*.xml
   typeAliasesPackage: spring.ku.boot.model
 envName: basic2
-security:
-  basic:
-    enabled: false
 
 image:
   host: 119.29.105.18

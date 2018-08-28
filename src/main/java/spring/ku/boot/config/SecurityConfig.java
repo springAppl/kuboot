@@ -11,13 +11,13 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/api/admin/**").hasRole("ADMIN")
                 .anyRequest().permitAll()
+                .antMatchers("/api/admin/**").hasRole("ADMIN")
+                .antMatchers("/api/article").authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
@@ -28,12 +28,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/api/logout")
                 .logoutSuccessUrl("/")
                 .and()
-                .antMatcher("/api/article")
-                .authorizeRequests()
-                .and()
                 .cors()
                 .disable()
                 .csrf()
                 .disable();
     }
+
+//    @Bean
+//    public UserDetailsService userDetailsService(){
+//        return new KuUserDetailsService();
+//    }
 }
