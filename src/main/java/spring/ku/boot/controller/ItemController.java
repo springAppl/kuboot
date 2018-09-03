@@ -31,9 +31,11 @@ public class ItemController {
     @GetMapping("/paging")
     public SimplePage<Item> page(@RequestParam(required = false, defaultValue = "1") Integer pageNumber,
                                  @RequestParam(required = false, defaultValue = "20") Integer pageSize,
-                                 @RequestParam(required = false) String name){
+                                 @RequestParam(required = false) String name,
+                                 @RequestParam(required = false) Long id){
         ItemCriteria itemCriteria = new ItemCriteria(pageNumber, pageSize);
         itemCriteria.setName(name);
+        itemCriteria.setId(id);
 
         return itemReadService.page(itemCriteria);
     }
