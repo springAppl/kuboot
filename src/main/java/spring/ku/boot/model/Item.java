@@ -1,6 +1,7 @@
 package spring.ku.boot.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.ToString;
 import spring.ku.boot.dao.data.json.LocalDateTimeSerializer;
@@ -9,6 +10,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+@ApiModel("商品")
 @Data
 @ToString
 @Entity

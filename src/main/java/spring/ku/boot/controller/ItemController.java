@@ -1,5 +1,8 @@
 package spring.ku.boot.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import spring.ku.boot.criteria.ItemCriteria;
@@ -7,7 +10,7 @@ import spring.ku.boot.criteria.SimplePage;
 import spring.ku.boot.model.Item;
 import spring.ku.boot.service.ItemReadService;
 import spring.ku.boot.service.ItemWriteService;
-
+@Api(value = "/api/item", description = "商品创建")
 @RestController
 @RequestMapping("/api/item")
 public class ItemController {
@@ -23,13 +26,15 @@ public class ItemController {
         this.itemReadService = itemReadService;
     }
 
+    @ApiOperation(value = "商品的创建和更新", response = Item.class, tags = {"商品"})
     @PutMapping
-    public Item save(@RequestBody Item item){
+    public Item save(@ApiParam("商品") @RequestBody Item item){
         return itemWriteService.save(item);
     }
 
+    @ApiOperation(value = "商品分页查询", tags = {"商品"})
     @GetMapping("/paging")
-    public SimplePage<Item> page(@RequestParam(required = false, defaultValue = "1") Integer pageNumber,
+    public SimplePage<Item> page(@ApiParam(name = "第几页", defaultValue = "1", required = false) @RequestParam(required = false, defaultValue = "1") Integer pageNumber,
                                  @RequestParam(required = false, defaultValue = "20") Integer pageSize,
                                  @RequestParam(required = false) String name,
                                  @RequestParam(required = false) Long id){
@@ -40,11 +45,13 @@ public class ItemController {
         return itemReadService.page(itemCriteria);
     }
 
+    @ApiOperation(value = "商品详情", tags = {"商品"})
     @GetMapping("/{id}")
     public Item detail(@PathVariable Long id) {
         return itemReadService.find(id);
     }
 
+    @ApiOperation(value = "删除商品", tags = {"商品"})
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         itemWriteService.delete(id);
