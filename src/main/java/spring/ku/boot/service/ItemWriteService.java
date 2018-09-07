@@ -4,4 +4,5 @@ import spring.ku.boot.model.Item;
 
 public interface ItemWriteService {
     Item save(Item item);
+    void delete(Long id);
 }

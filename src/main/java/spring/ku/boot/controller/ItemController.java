@@ -39,4 +39,14 @@ public class ItemController {
 
         return itemReadService.page(itemCriteria);
     }
+
+    @GetMapping("/{id}")
+    public Item detail(@PathVariable Long id) {
+        return itemReadService.find(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        itemWriteService.delete(id);
+    }
 }

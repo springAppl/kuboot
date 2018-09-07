@@ -7,4 +7,6 @@ import spring.ku.boot.model.Item;
 public interface ItemReadService {
 
     SimplePage<Item> page(ItemCriteria itemCriteria);
+
+    Item find(Long id);
 }

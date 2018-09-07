@@ -28,4 +28,9 @@ public class ItemWriteServiceImpl implements ItemWriteService {
         item.setUpdateAt(LocalDateTime.now());
         return itemRepo.save(item);
     }
+
+    @Override
+    public void delete(Long id) {
+        itemRepo.delete(id);
+    }
 }

@@ -7,7 +7,6 @@ import spring.ku.boot.criteria.SimplePage;
 import spring.ku.boot.dao.ItemDAO;
 import spring.ku.boot.dao.data.ItemRepo;
 import spring.ku.boot.model.Item;
-import spring.ku.boot.query.ItemPage;
 import spring.ku.boot.service.ItemReadService;
 
 @Service
@@ -26,5 +25,10 @@ public class ItemReadServiceImpl implements ItemReadService {
 
     public SimplePage<Item> page(ItemCriteria itemCriteria){
         return itemDAO.paging(itemCriteria);
+    }
+
+    @Override
+    public Item find(Long id) {
+        return itemDAO.findByID(id);
     }
 }
