@@ -10,6 +10,8 @@ import spring.ku.boot.criteria.SimplePage;
 import spring.ku.boot.model.Item;
 import spring.ku.boot.service.ItemReadService;
 import spring.ku.boot.service.ItemWriteService;
+import java.util.Objects;
+
 @Api(value = "/api/item", description = "商品创建")
 @RestController
 @RequestMapping("/api/item")
@@ -29,6 +31,9 @@ public class ItemController {
     @ApiOperation(value = "商品的创建和更新", response = Item.class, tags = {"商品"})
     @PutMapping
     public Item save(@ApiParam("商品") @RequestBody Item item){
+        // validate name price image
+        if (Objects.isNull(item)) throw new IllegalArgumentException("item can't be null");
+        if (Objects.isNull(item.getName())) throw new IllegalArgumentException("item name can't be null");
         return itemWriteService.save(item);
     }
 

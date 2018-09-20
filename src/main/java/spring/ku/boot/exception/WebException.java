@@ -31,4 +31,8 @@ public class WebException extends RuntimeException {
     public WebException(Integer code){
         this.code = code;
     }
+
+    public WebException(){
+        this("服务异常，请稍后尝试", 500);
+    }
 }
