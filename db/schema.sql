@@ -86,3 +86,16 @@ CREATE TABLE `item` (
   `update_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+CREATE TABLE `shop` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` int(11) DEFAULT NULL,
+  `longitude` double DEFAULT NULL,
+  `latitude` double DEFAULT NULL,
+  `location_detail` varchar(50) DEFAULT NULL,
+  `logo` varchar(200) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `start_time` double DEFAULT NULL,
+  `end_time` double DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

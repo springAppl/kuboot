@@ -1,4 +1,4 @@
-package spring.ku.boot.controller;
+package spring.ku.boot.controller.mini.page;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -20,7 +20,7 @@ public class IndexPage {
     public Object index() throws IOException {
         Object obj = stringRedisTemplate.opsForValue().get("index");
         if (Objects.isNull(obj)) {
-            String index = ResourceUtil.classPath("restaurant");
+            String index = ResourceUtil.classPath("restaurant.json");
             stringRedisTemplate.opsForValue().set("index", index);
             return index;
         }
@@ -40,7 +40,7 @@ public class IndexPage {
 
     @PutMapping("/template")
     public Object template() throws IOException {
-        String index = ResourceUtil.classPath("restaurant");
+        String index = ResourceUtil.classPath("restaurant.json");
         stringRedisTemplate.opsForValue().set("index", index);
         return index;
     }
