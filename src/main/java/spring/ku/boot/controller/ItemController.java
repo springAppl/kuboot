@@ -1,7 +1,5 @@
 package spring.ku.boot.controller;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -9,14 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import spring.ku.boot.criteria.ItemCriteria;
 import spring.ku.boot.criteria.SimplePage;
-import spring.ku.boot.exception.WebException;
 import spring.ku.boot.model.Item;
 import spring.ku.boot.service.ItemReadService;
 import spring.ku.boot.service.ItemWriteService;
-import spring.ku.boot.util.ResourceUtil;
-
-import java.io.IOException;
-import java.util.List;
 import java.util.Objects;
 
 @Api(value = "/api/item", description = "商品创建")
@@ -67,17 +60,5 @@ public class ItemController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         itemWriteService.delete(id);
-    }
-
-    @ApiOperation(value = "店铺展示商品", tags = {"商品"})
-    @GetMapping("/shop/{shopID}")
-    public List<Item> shopItems(@PathVariable Long shopID){
-        String json = ResourceUtil.classPath("shop-item.json");
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            return objectMapper.readValue(json, new TypeReference<List<Item>>(){});
-        } catch (IOException e) {
-            throw new WebException();
-        }
     }
 }

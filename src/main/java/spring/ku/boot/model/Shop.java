@@ -40,6 +40,5 @@ public class Shop implements Serializable {
     @Column(name = "end_time")
     private LocalTime endTime;
 
-
     private String workTime;
 }

@@ -15,18 +15,4 @@ public class MVCConfig extends WebMvcConfigurerAdapter {
         source.setUseCodeAsDefaultMessage(true);
         return source;
     }
-
-
-    class BIncrement {
-        ThreadLocal<Integer> num = ThreadLocal.withInitial(() -> 0);
-        public int increase() {
-            num.set(num.get() + 1);
-            return num.get();
-        }
-        public void print() {
-            for (int i = 0; i < 4; i++) {
-                System.out.println(Thread.currentThread().getName() + " " + increase());
-            }
-        }
-    }
 }

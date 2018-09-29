@@ -1,47 +1,58 @@
--- MySQL dump 10.13  Distrib 5.7.22, for Linux (x86_64)
---
--- Host: localhost    Database: luna
--- ------------------------------------------------------
--- Server version	5.7.22-0ubuntu0.16.04.1
+/*
+Navicat MySQL Data Transfer
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+Source Server         : LOCALHOST
+Source Server Version : 50723
+Source Host           : 127.0.0.1:3306
+Source Database       : luna
 
---
--- Dumping data for table `article`
---
-use luna;
-LOCK TABLES `article` WRITE;
-/*!40000 ALTER TABLE `article` DISABLE KEYS */;
-INSERT INTO `article` VALUES (2,'java入门',NULL,'[\"java\",\"linux\"]',NULL,NULL,NULL),(3,'linxu入门',NULL,'[\"感悟\",\"随笔\"]',NULL,NULL,NULL),(4,'java入门到放弃',NULL,'[\"技术\",\"java\"]',NULL,NULL,NULL),(5,'java哈哈哈',NULL,'[\"技术\",\"产品\",\"感悟\",\"随笔\"]',NULL,NULL,NULL),(6,'java出现',NULL,'[\"技术\",\"产品\",\"感悟\",\"随笔\"]',NULL,NULL,NULL),(7,'spring入门到放弃','<p >spring是一个依赖注入框架</p>','[\"技术\",\"产品\",\"感悟\",\"随笔\"]',NULL,NULL,NULL),(8,'linux入门到精通','<p >linux是世界上使用非常广泛的操作系统</p>','[\"技术\",\"linux\"]',NULL,NULL,NULL),(9,'asdf','<p >请输入内容asdfasdfasd</p>','[\"技术\",\"产品\",\"感悟\",\"随笔\"]',NULL,NULL,NULL),(10,'asdf','<p >请输入内容asdfasdfasdf</p>','[\"技术\",\"产品\",\"感悟\",\"随笔\"]',NULL,NULL,NULL),(11,'adfasdf',NULL,'[\"技术\",\"产品\",\"感悟\",\"随笔\"]',NULL,NULL,NULL),(12,'linxu入门','<p >你好this is adfasdfasdfasdfasd</p>','[\"技术\",\"产品\",\"感悟\",\"随笔\"]',NULL,NULL,NULL),(13,'java哈哈哈','<p >请输入内容asdfasdfa</p>','[\"技术\",\"产品\",\"感悟\",\"随笔\"]',NULL,NULL,NULL),(14,'asdfasd','<p >请输入内容asdfadsf</p>','[\"技术\",\"产品\",\"感悟\",\"随笔\"]',NULL,NULL,NULL),(15,'google',NULL,'[\"技术\",\"产品\",\"感悟\",\"随笔\"]',NULL,NULL,NULL),(16,'高考加油','<p >又到了高考时期，很多人居然又丢了高考证</p>','[\"感悟\",\"随笔\"]',NULL,NULL,NULL),(17,'add image','<p >只是为了图片演示</p>\n<p ><br></p>\n<p ><img src=\"http://www.news.com/api/image/1\"/></p>\n<p ><br></p>\n<p ><br></p>\n<p ><br></p>\n<p ><img src=\"http://www.news.com/api/image/2\"/></p>\n<p ><br></p>','[\"技术\",\"产品\",\"感悟\",\"随笔\"]',NULL,NULL,NULL),(18,'文件大小','<p >大图片终于上传成功了</p>\n<p ><br></p>\n<p ><img src=\"http://www.news.com/api/image/3\"/></p>\n<p ><br></p>','[\"技术\",\"产品\",\"感悟\",\"随笔\"]',NULL,NULL,NULL),(19,'新版蚂蚁','<p >新版这个</p>','[\"java\",\"spring\",\"reactjs\"]','2018-06-25 12:58:40','2018-06-25 12:58:40',11),(20,'新版蚂蚁','<p >新版这个啊啊啊</p>','[\"java\",\"spring\",\"reactjs\"]','2018-06-25 12:59:32','2018-06-25 12:59:32',11),(21,'新版蚂蚁','<p >阿斯顿发发是新版这个啊啊啊　</p>','[\"java\",\"spring\",\"reactjs\"]','2018-06-25 13:00:50','2018-06-25 13:00:50',11),(22,'java','<p >请输入内容adsfadfasd</p>','[\"java\",\"spring\",\"reactjs\"]','2018-07-05 14:25:55','2018-07-05 14:25:55',8),(23,'阿斯佳的','<p >请输入内容thor</p>','[\"java\",\"spring\",\"reactjs\"]','2018-07-05 17:39:20','2018-07-05 17:39:20',8);
-/*!40000 ALTER TABLE `article` ENABLE KEYS */;
-UNLOCK TABLES;
+Target Server Type    : MYSQL
+Target Server Version : 50723
+File Encoding         : 65001
 
---
--- Dumping data for table `user`
---
+Date: 2018-09-29 10:10:20
+*/
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (8,'liu','123456','123456','[\"ADMIN\"]'),(9,'neo','123456','123456',NULL),(10,'lee','123456','123456',NULL),(11,'linus','123',NULL,NULL);
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+SET FOREIGN_KEY_CHECKS=0;
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+-- ----------------------------
+-- Records of article
+-- ----------------------------
+INSERT INTO `article` VALUES ('2', 'java入门', null, '[\"java\",\"linux\"]', null, null, null);
+INSERT INTO `article` VALUES ('3', 'linxu入门', null, '[\"感悟\",\"随笔\"]', null, null, null);
+INSERT INTO `article` VALUES ('4', 'java入门到放弃', null, '[\"技术\",\"java\"]', null, null, null);
+INSERT INTO `article` VALUES ('5', 'java哈哈哈', null, '[\"技术\",\"产品\",\"感悟\",\"随笔\"]', null, null, null);
+INSERT INTO `article` VALUES ('6', 'java出现', null, '[\"技术\",\"产品\",\"感悟\",\"随笔\"]', null, null, null);
+INSERT INTO `article` VALUES ('7', 'spring入门到放弃', '<p >spring是一个依赖注入框架</p>', '[\"技术\",\"产品\",\"感悟\",\"随笔\"]', null, null, null);
+INSERT INTO `article` VALUES ('8', 'linux入门到精通', '<p >linux是世界上使用非常广泛的操作系统</p>', '[\"技术\",\"linux\"]', null, null, null);
+INSERT INTO `article` VALUES ('9', 'asdf', '<p >请输入内容asdfasdfasd</p>', '[\"技术\",\"产品\",\"感悟\",\"随笔\"]', null, null, null);
+INSERT INTO `article` VALUES ('10', 'asdf', '<p >请输入内容asdfasdfasdf</p>', '[\"技术\",\"产品\",\"感悟\",\"随笔\"]', null, null, null);
+INSERT INTO `article` VALUES ('11', 'adfasdf', null, '[\"技术\",\"产品\",\"感悟\",\"随笔\"]', null, null, null);
+INSERT INTO `article` VALUES ('12', 'linxu入门', '<p >你好this is adfasdfasdfasdfasd</p>', '[\"技术\",\"产品\",\"感悟\",\"随笔\"]', null, null, null);
+INSERT INTO `article` VALUES ('13', 'java哈哈哈', '<p >请输入内容asdfasdfa</p>', '[\"技术\",\"产品\",\"感悟\",\"随笔\"]', null, null, null);
+INSERT INTO `article` VALUES ('14', 'asdfasd', '<p >请输入内容asdfadsf</p>', '[\"技术\",\"产品\",\"感悟\",\"随笔\"]', null, null, null);
+INSERT INTO `article` VALUES ('15', 'google', null, '[\"技术\",\"产品\",\"感悟\",\"随笔\"]', null, null, null);
+INSERT INTO `article` VALUES ('16', '高考加油', '<p >又到了高考时期，很多人居然又丢了高考证</p>', '[\"感悟\",\"随笔\"]', null, null, null);
+INSERT INTO `article` VALUES ('17', 'add image', '<p >只是为了图片演示</p>\n<p ><br></p>\n<p ><img src=\"http://www.news.com/api/image/1\"/></p>\n<p ><br></p>\n<p ><br></p>\n<p ><br></p>\n<p ><img src=\"http://www.news.com/api/image/2\"/></p>\n<p ><br></p>', '[\"技术\",\"产品\",\"感悟\",\"随笔\"]', null, null, null);
+INSERT INTO `article` VALUES ('18', '文件大小', '<p >大图片终于上传成功了</p>\n<p ><br></p>\n<p ><img src=\"http://www.news.com/api/image/3\"/></p>\n<p ><br></p>', '[\"技术\",\"产品\",\"感悟\",\"随笔\"]', null, null, null);
+INSERT INTO `article` VALUES ('19', '新版蚂蚁', '<p >新版这个</p>', '[\"java\",\"spring\",\"reactjs\"]', '2018-06-25 12:58:40', '2018-06-25 12:58:40', '11');
+INSERT INTO `article` VALUES ('20', '新版蚂蚁', '<p >新版这个啊啊啊</p>', '[\"java\",\"spring\",\"reactjs\"]', '2018-06-25 12:59:32', '2018-06-25 12:59:32', '11');
+INSERT INTO `article` VALUES ('21', '新版蚂蚁', '<p >阿斯顿发发是新版这个啊啊啊　</p>', '[\"java\",\"spring\",\"reactjs\"]', '2018-06-25 13:00:50', '2018-06-25 13:00:50', '11');
+INSERT INTO `article` VALUES ('22', 'java', '<p >请输入内容adsfadfasd</p>', '[\"java\",\"spring\",\"reactjs\"]', '2018-07-05 14:25:55', '2018-07-05 14:25:55', '8');
+INSERT INTO `article` VALUES ('23', '阿斯佳的', '<p >请输入内容thor</p>', '[\"java\",\"spring\",\"reactjs\"]', '2018-07-05 17:39:20', '2018-07-05 17:39:20', '8');
 
--- Dump completed on 2018-07-07 15:39:26
+-- ----------------------------
+-- Records of page
+-- ----------------------------
+INSERT INTO `page` VALUES ('index', '[  {    \"id\":1,    \"typeId\":\"category\",    \"content\":{      \"categories\":[        {          \"id\":1,          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/chuan/%E5%B7%9D%E8%8F%9C.jpg\",          \"name\":\"川\"        },        {          \"id\":2,          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/xiang/%E6%B9%98%E8%8F%9C.jpg\",          \"name\":\"湘\"        },        {          \"id\":3,          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/lu/%E9%B2%81%E8%8F%9C.jpg\",          \"name\":\"鲁\"        },        {          \"id\":4,          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/yue/%E7%B2%A4%E8%8F%9C.jpg\",          \"name\":\"粤\"        }      ]    }  },  {    \"id\":2,    \"typeId\":\"hotitems\",    \"content\":{      \"items\":[        {          \"id\":1,          \"name\":\"伊利儿童经典原味牛奶片160g*3盒装奶酪乳制品零食干吃奶片奶贝\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/chuan/%E9%A6%99%E9%94%85.png\",          \"price\":1000        },        {          \"id\":2,          \"name\":\"科尔沁你氏奶干100g原味内蒙奶酪休闲零食 奶制品\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/chuan/%E5%B7%9D%E9%B1%BC.jpg\",          \"price\":3000        },        {          \"id\":3,          \"name\":\"维怡特奶条内蒙古特产奶制品儿童休闲零食酸奶条棒疙瘩奶酪400g\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/chuan/%E5%89%81%E6%A4%92%E9%B1%BC%E5%A4%B4.jpg\",          \"price\":700        },        {          \"id\":4,          \"name\":\"蒙古王38度蓝包蓝色故乡白酒整箱6瓶 475ml*6浓香型低度草原白酒\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/chuan/%E9%85%B8%E8%8F%9C%E9%B1%BC.jpg\",          \"price\":60000        },        {          \"id\":5,          \"name\":\"蒙古王55度原浆 3000ml坛酒 浓香型高度白酒 地道蒙古族口味\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/lu/%E5%BC%80%E5%8C%96%E6%B8%85%E6%B0%B4%E9%B1%BC.jpg\",          \"price\":65000        },        {          \"id\":6,          \"name\":\"科尔沁手撕风干牛肉干400g原味内蒙特产休闲零食包邮女生好吃的\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/yue/%E5%BF%AB%E9%A4%90%E5%A5%97%E9%A4%90.jpg\",          \"price\":6000        },        {          \"id\":7,          \"name\":\"牛肉干❤️内蒙古牛肉干❤️超干风干牛肉干 草原达尔沁 零食特产\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/yue/%E7%9F%B3%E9%94%85%E9%A5%AD.png\",          \"price\":7000        },        {          \"id\":8,          \"name\":\"牛肉干 内蒙古风干特产肉类零食小吃 蒙亮原味香辣手撕牛肉干500g\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/xiang/%E9%B8%A1%E4%B8%81.jpeg\",          \"price\":8000        }      ]    }  }]');
+INSERT INTO `page` VALUES ('shopDetail:1', '[  {    \"id\":1,    \"typeId\":\"category\",    \"content\":{      \"categories\":[        {          \"id\":1,          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/chuan/%E5%B7%9D%E8%8F%9C.jpg\",          \"name\":\"川\"        },        {          \"id\":2,          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/xiang/%E6%B9%98%E8%8F%9C.jpg\",          \"name\":\"湘\"        },        {          \"id\":3,          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/lu/%E9%B2%81%E8%8F%9C.jpg\",          \"name\":\"鲁\"        },        {          \"id\":4,          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/yue/%E7%B2%A4%E8%8F%9C.jpg\",          \"name\":\"粤\"        }      ]    }  },  {    \"id\":2,    \"typeId\":\"hotitems\",    \"content\":{      \"items\":[        {          \"id\":1,          \"name\":\"伊利儿童经典原味牛奶片160g*3盒装奶酪乳制品零食干吃奶片奶贝\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/chuan/%E9%A6%99%E9%94%85.png\",          \"price\":1000        },        {          \"id\":2,          \"name\":\"科尔沁你氏奶干100g原味内蒙奶酪休闲零食 奶制品\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/chuan/%E5%B7%9D%E9%B1%BC.jpg\",          \"price\":3000        },        {          \"id\":3,          \"name\":\"维怡特奶条内蒙古特产奶制品儿童休闲零食酸奶条棒疙瘩奶酪400g\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/chuan/%E5%89%81%E6%A4%92%E9%B1%BC%E5%A4%B4.jpg\",          \"price\":700        },        {          \"id\":4,          \"name\":\"蒙古王38度蓝包蓝色故乡白酒整箱6瓶 475ml*6浓香型低度草原白酒\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/chuan/%E9%85%B8%E8%8F%9C%E9%B1%BC.jpg\",          \"price\":60000        },        {          \"id\":5,          \"name\":\"蒙古王55度原浆 3000ml坛酒 浓香型高度白酒 地道蒙古族口味\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/lu/%E5%BC%80%E5%8C%96%E6%B8%85%E6%B0%B4%E9%B1%BC.jpg\",          \"price\":65000        },        {          \"id\":6,          \"name\":\"科尔沁手撕风干牛肉干400g原味内蒙特产休闲零食包邮女生好吃的\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/yue/%E5%BF%AB%E9%A4%90%E5%A5%97%E9%A4%90.jpg\",          \"price\":6000        },        {          \"id\":7,          \"name\":\"牛肉干❤️内蒙古牛肉干❤️超干风干牛肉干 草原达尔沁 零食特产\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/yue/%E7%9F%B3%E9%94%85%E9%A5%AD.png\",          \"price\":7000        },        {          \"id\":8,          \"name\":\"牛肉干 内蒙古风干特产肉类零食小吃 蒙亮原味香辣手撕牛肉干500g\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/xiang/%E9%B8%A1%E4%B8%81.jpeg\",          \"price\":8000        }      ]    }  }]');
+INSERT INTO `page` VALUES ('shopDetail:2', '[  {    \"id\":1,    \"typeId\":\"category\",    \"content\":{      \"categories\":[        {          \"id\":1,          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/chuan/%E5%B7%9D%E8%8F%9C.jpg\",          \"name\":\"川\"        },        {          \"id\":2,          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/xiang/%E6%B9%98%E8%8F%9C.jpg\",          \"name\":\"湘\"        },        {          \"id\":3,          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/lu/%E9%B2%81%E8%8F%9C.jpg\",          \"name\":\"鲁\"        },        {          \"id\":4,          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/yue/%E7%B2%A4%E8%8F%9C.jpg\",          \"name\":\"粤\"        }      ]    }  },  {    \"id\":2,    \"typeId\":\"hotitems\",    \"content\":{      \"items\":[        {          \"id\":1,          \"name\":\"伊利儿童经典原味牛奶片160g*3盒装奶酪乳制品零食干吃奶片奶贝\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/chuan/%E9%A6%99%E9%94%85.png\",          \"price\":1000        },        {          \"id\":2,          \"name\":\"科尔沁你氏奶干100g原味内蒙奶酪休闲零食 奶制品\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/chuan/%E5%B7%9D%E9%B1%BC.jpg\",          \"price\":3000        },        {          \"id\":3,          \"name\":\"维怡特奶条内蒙古特产奶制品儿童休闲零食酸奶条棒疙瘩奶酪400g\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/chuan/%E5%89%81%E6%A4%92%E9%B1%BC%E5%A4%B4.jpg\",          \"price\":700        },        {          \"id\":4,          \"name\":\"蒙古王38度蓝包蓝色故乡白酒整箱6瓶 475ml*6浓香型低度草原白酒\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/chuan/%E9%85%B8%E8%8F%9C%E9%B1%BC.jpg\",          \"price\":60000        },        {          \"id\":5,          \"name\":\"蒙古王55度原浆 3000ml坛酒 浓香型高度白酒 地道蒙古族口味\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/lu/%E5%BC%80%E5%8C%96%E6%B8%85%E6%B0%B4%E9%B1%BC.jpg\",          \"price\":65000        },        {          \"id\":6,          \"name\":\"科尔沁手撕风干牛肉干400g原味内蒙特产休闲零食包邮女生好吃的\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/yue/%E5%BF%AB%E9%A4%90%E5%A5%97%E9%A4%90.jpg\",          \"price\":6000        },        {          \"id\":7,          \"name\":\"牛肉干❤️内蒙古牛肉干❤️超干风干牛肉干 草原达尔沁 零食特产\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/yue/%E7%9F%B3%E9%94%85%E9%A5%AD.png\",          \"price\":7000        },        {          \"id\":8,          \"name\":\"牛肉干 内蒙古风干特产肉类零食小吃 蒙亮原味香辣手撕牛肉干500g\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/xiang/%E9%B8%A1%E4%B8%81.jpeg\",          \"price\":8000        }      ]    }  }]');
+INSERT INTO `page` VALUES ('shopDetail:3', '[  {    \"id\":1,    \"typeId\":\"category\",    \"content\":{      \"categories\":[        {          \"id\":1,          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/chuan/%E5%B7%9D%E8%8F%9C.jpg\",          \"name\":\"川\"        },        {          \"id\":2,          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/xiang/%E6%B9%98%E8%8F%9C.jpg\",          \"name\":\"湘\"        },        {          \"id\":3,          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/lu/%E9%B2%81%E8%8F%9C.jpg\",          \"name\":\"鲁\"        },        {          \"id\":4,          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/yue/%E7%B2%A4%E8%8F%9C.jpg\",          \"name\":\"粤\"        }      ]    }  },  {    \"id\":2,    \"typeId\":\"hotitems\",    \"content\":{      \"items\":[        {          \"id\":1,          \"name\":\"伊利儿童经典原味牛奶片160g*3盒装奶酪乳制品零食干吃奶片奶贝\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/chuan/%E9%A6%99%E9%94%85.png\",          \"price\":1000        },        {          \"id\":2,          \"name\":\"科尔沁你氏奶干100g原味内蒙奶酪休闲零食 奶制品\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/chuan/%E5%B7%9D%E9%B1%BC.jpg\",          \"price\":3000        },        {          \"id\":3,          \"name\":\"维怡特奶条内蒙古特产奶制品儿童休闲零食酸奶条棒疙瘩奶酪400g\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/chuan/%E5%89%81%E6%A4%92%E9%B1%BC%E5%A4%B4.jpg\",          \"price\":700        },        {          \"id\":4,          \"name\":\"蒙古王38度蓝包蓝色故乡白酒整箱6瓶 475ml*6浓香型低度草原白酒\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/chuan/%E9%85%B8%E8%8F%9C%E9%B1%BC.jpg\",          \"price\":60000        },        {          \"id\":5,          \"name\":\"蒙古王55度原浆 3000ml坛酒 浓香型高度白酒 地道蒙古族口味\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/lu/%E5%BC%80%E5%8C%96%E6%B8%85%E6%B0%B4%E9%B1%BC.jpg\",          \"price\":65000        },        {          \"id\":6,          \"name\":\"科尔沁手撕风干牛肉干400g原味内蒙特产休闲零食包邮女生好吃的\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/yue/%E5%BF%AB%E9%A4%90%E5%A5%97%E9%A4%90.jpg\",          \"price\":6000        },        {          \"id\":7,          \"name\":\"牛肉干❤️内蒙古牛肉干❤️超干风干牛肉干 草原达尔沁 零食特产\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/yue/%E7%9F%B3%E9%94%85%E9%A5%AD.png\",          \"price\":7000        },        {          \"id\":8,          \"name\":\"牛肉干 内蒙古风干特产肉类零食小吃 蒙亮原味香辣手撕牛肉干500g\",          \"image\":\"https://kuboot-1256353119.cos.ap-beijing.myqcloud.com/image/xiang/%E9%B8%A1%E4%B8%81.jpeg\",          \"price\":8000        }      ]    }  }]');
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+INSERT INTO `user` VALUES ('8', 'liu', '123456', '123456', '[\"ADMIN\"]');
+INSERT INTO `user` VALUES ('9', 'neo', '123456', '123456', null);
+INSERT INTO `user` VALUES ('10', 'lee', '123456', '123456', null);
+INSERT INTO `user` VALUES ('11', 'linus', '123', null, null);
