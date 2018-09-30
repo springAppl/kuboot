@@ -10,7 +10,6 @@ import spring.ku.boot.model.User;
 import spring.ku.boot.service.UserReadService;
 import spring.ku.boot.service.UserWriteService;
 import spring.ku.boot.util.UserUtil;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Objects;
@@ -19,21 +18,22 @@ import java.util.Objects;
 @RestController
 public class UserController {
 
+    private final UserReadService userReadService;
+
+    private final UserWriteService userWriteService;
 
     @Autowired
-    private UserReadService userReadService;
-
-    @Autowired
-    private UserWriteService userWriteService;
-
+    public UserController(UserReadService userReadService, UserWriteService userWriteService) {
+        this.userReadService = userReadService;
+        this.userWriteService = userWriteService;
+    }
 
     @GetMapping("/paging")
     public SimplePage<User> paging(Integer pageNo, Integer pageSize){
-        SimplePage<User> page = userReadService.paging(new UserCriteria(pageNo, pageSize));
-        return page;
+        return userReadService.paging(new UserCriteria(pageNo, pageSize));
     }
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public User login(HttpServletRequest request,
                          @RequestParam("account") String account,
                          @RequestParam("password") String password){
@@ -50,19 +50,22 @@ public class UserController {
         return info(user.getId());
     }
 
-
     private void loginActivity(Long id, HttpServletRequest request) {
         HttpSession session = request.getSession(true);
         session.setAttribute("id", id);
     }
 
-    @GetMapping("/info")
-    public User info(HttpServletRequest request){
+    @GetMapping
+    public User info(){
         return info(UserUtil.current().getId());
     }
 
     private User info(Long id) {
-        return userReadService.findByID(id);
+        User user = userReadService.findByID(id);
+        if (Objects.isNull(user)) {
+            throw new WebException("用户不存在");
+        }
+        return cleanPassword(user);
     }
 
 
@@ -88,8 +91,8 @@ public class UserController {
         request.getSession().invalidate();
     }
 
-    @GetMapping("/detail")
-    public User details(){
-        return UserUtil.current();
+    private User cleanPassword(User user){
+        user.setPassword(null);
+        return user;
     }
 }

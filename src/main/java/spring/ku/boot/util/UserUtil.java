@@ -22,6 +22,11 @@ public class UserUtil {
     }
 
     public static User current(){
-        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Object obj = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (obj instanceof User) {
+            return (User) obj;
+        } else {
+            throw new WebException("用户未登录", 401);
+        }
     }
 }
