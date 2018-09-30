@@ -30,6 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .loginProcessingUrl("/api/login")
                 .usernameParameter("account")
+                .successForwardUrl("/boot")
                 .and()
                 .logout()
                 .logoutUrl("/api/logout")
