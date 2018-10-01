@@ -93,3 +93,17 @@ CREATE TABLE `user` (
   `role_json` varchar(1024) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+
+
+-- ----------------------------
+-- Table structure for user_shop
+-- ----------------------------
+DROP TABLE IF EXISTS `user_shop`;
+CREATE TABLE `user_shop` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `shop_id` int(11) DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;

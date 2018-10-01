@@ -56,3 +56,9 @@ INSERT INTO `user` VALUES ('8', 'liu', '123456', '123456', '[\"ADMIN\"]');
 INSERT INTO `user` VALUES ('9', 'neo', '123456', '123456', null);
 INSERT INTO `user` VALUES ('10', 'lee', '123456', '123456', null);
 INSERT INTO `user` VALUES ('11', 'linus', '123', null, null);
+
+
+INSERT INTO `user_shop` (`id`, `user_id`, `shop_id`, `create_at`, `update_at`)
+VALUES
+	(1,11,1,NULL,NULL),
+	(2,10,2,NULL,NULL);
