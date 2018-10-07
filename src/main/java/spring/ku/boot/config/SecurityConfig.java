@@ -1,21 +1,26 @@
 package spring.ku.boot.config;
 
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import spring.ku.boot.authentication.FingerPrintConfiguer;
+import spring.ku.boot.authentication.FingerPrintProvinder;
+import spring.ku.boot.security.KuUserDetailsService;
 
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableWebSecurity
-@Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // 权限管理, EntryPoint, 使用状态码。
+
         http
+                .userDetailsService(userDetailsService())
+                .authenticationProvider(fingerPrintProvinder())
+                .antMatcher("/api/**")
                 .authorizeRequests()
                 .antMatchers("/api/admin/**").hasRole("ADMIN")
                 .antMatchers("/api/article").authenticated()
@@ -28,6 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
+                .permitAll()
                 .loginProcessingUrl("/api/login")
                 .usernameParameter("account")
                 .successForwardUrl("/boot")
@@ -36,14 +42,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/api/logout")
                 .logoutSuccessUrl("/login")
                 .and()
+                .apply(new FingerPrintConfiguer<>())
+                .loginProcessingUrl("/api/finger-print")
+                .defaultSuccessUrl("/boot")
+                .and()
                 .cors()
                 .disable()
                 .csrf()
                 .disable();
     }
 
-//    @Bean
-//    public UserDetailsService userDetailsService(){
-//        return new KuUserDetailsService();
-//    }
+
+    @Bean
+    public UserDetailsService userDetailsService(){
+        return new KuUserDetailsService();
+    }
+
+    @Bean
+    public FingerPrintProvinder fingerPrintProvinder(){
+        return new FingerPrintProvinder();
+    }
+
 }

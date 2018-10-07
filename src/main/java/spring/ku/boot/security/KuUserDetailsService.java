@@ -27,4 +27,14 @@ public class KuUserDetailsService implements UserDetailsService {
         }
         return new KuUserDetails(user);
     }
+
+    public UserDetails loadUserByFingerPrint(String s) throws UsernameNotFoundException {
+        if (!Objects.equals("fingerPrint", s)){
+            throw new UsernameNotFoundException("fingerPrint: " + s);
+        }
+        User user = new User();
+        user.setId(100000L);
+        user.setName("fingerPrint");
+        return new KuUserDetails(user);
+    }
 }
