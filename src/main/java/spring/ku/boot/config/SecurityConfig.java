@@ -6,9 +6,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import spring.ku.boot.authentication.FingerPrintConfiguer;
 import spring.ku.boot.authentication.FingerPrintProvinder;
 import spring.ku.boot.security.KuUserDetailsService;
+import spring.ku.boot.service.UserReadService;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -30,22 +30,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .mvcMatchers(HttpMethod.PUT, "/api/index/use/default").hasRole("ADMIN")
                 .mvcMatchers(HttpMethod.PUT, "/api/shop-detail").authenticated()
                 .mvcMatchers(HttpMethod.PUT, "/api/shop-detail/{id}").authenticated()
+                .mvcMatchers(HttpMethod.POST, "/api/user/login").permitAll()
+                .mvcMatchers(HttpMethod.PUT, "/api/user/logout").authenticated()
                 .and()
-                .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .loginProcessingUrl("/api/login")
-                .usernameParameter("account")
-                .successForwardUrl("/boot")
-                .and()
-                .logout()
-                .logoutUrl("/api/logout")
-                .logoutSuccessUrl("/login")
-                .and()
-                .apply(new FingerPrintConfiguer<>())
-                .loginProcessingUrl("/api/finger-print")
-                .defaultSuccessUrl("/boot")
-                .and()
+//                .formLogin()
+//                .loginPage("/login")
+//                .loginProcessingUrl("/api/login")
+//                .usernameParameter("account")
+//                .successForwardUrl("/boot")
+//                .and()
+//                .logout()
+//                .logoutUrl("/api/logout")
+//                .logoutSuccessUrl("/")
+//                .and()
                 .cors()
                 .disable()
                 .csrf()
@@ -54,8 +51,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     @Bean
-    public UserDetailsService userDetailsService(){
-        return new KuUserDetailsService();
+    public UserDetailsService userDetailsService(UserReadService userReadService){
+        return new KuUserDetailsService(userReadService);
     }
 
     @Bean

@@ -14,8 +14,12 @@ import java.util.Objects;
 public class KuUserDetailsService implements UserDetailsService {
 
 
+    private final UserReadService userReadService;
+
     @Autowired
-    private UserReadService userReadService;
+    public KuUserDetailsService(UserReadService userReadService) {
+        this.userReadService = userReadService;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
