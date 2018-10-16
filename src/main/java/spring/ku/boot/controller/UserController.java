@@ -1,20 +1,21 @@
 package spring.ku.boot.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper;
+import org.springframework.security.core.authority.mapping.NullAuthoritiesMapper;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
-import org.springframework.security.web.authentication.session.NullAuthenticatedSessionStrategy;
-import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import spring.ku.boot.criteria.SimplePage;
 import spring.ku.boot.criteria.UserCriteria;
 import spring.ku.boot.exception.WebException;
 import spring.ku.boot.model.User;
+import spring.ku.boot.security.KuUserDetails;
 import spring.ku.boot.service.UserReadService;
 import spring.ku.boot.service.UserWriteService;
 import spring.ku.boot.util.UserUtil;
@@ -31,17 +32,16 @@ public class UserController {
 
     private final UserWriteService userWriteService;
 
-    private final AuthenticationManager authenticationManager;
-
     private final LogoutHandler logoutHandler;
+
+    private GrantedAuthoritiesMapper authoritiesMapper = new NullAuthoritiesMapper();
+
 
     @Autowired
     public UserController(UserReadService userReadService,
-                          UserWriteService userWriteService,
-                          AuthenticationManager authenticationManager) {
+                          UserWriteService userWriteService) {
         this.userReadService = userReadService;
         this.userWriteService = userWriteService;
-        this.authenticationManager = authenticationManager;
         this.logoutHandler = new SecurityContextLogoutHandler();
     }
 
@@ -71,12 +71,14 @@ public class UserController {
 
 
     private void loginActivity(User user, HttpServletRequest request, HttpServletResponse response) {
-        Authentication authRequest = new UsernamePasswordAuthenticationToken(user, null);
+        UserDetails userDetails = new KuUserDetails(user);
 
-        //Authentication authentication = authenticationManager.authenticate(authRequest);
-        SecurityContextHolder.getContext().setAuthentication(authRequest);
-        SessionAuthenticationStrategy sessionStrategy = new NullAuthenticatedSessionStrategy();
-        sessionStrategy.onAuthentication(authRequest, request, response);
+        UsernamePasswordAuthenticationToken result = new UsernamePasswordAuthenticationToken(
+                userDetails, user.getName(),
+                authoritiesMapper.mapAuthorities(userDetails.getAuthorities()));
+
+
+        SecurityContextHolder.getContext().setAuthentication(result);
     }
 
     @GetMapping
