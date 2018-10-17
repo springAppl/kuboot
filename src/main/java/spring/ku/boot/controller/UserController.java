@@ -77,7 +77,6 @@ public class UserController {
                 userDetails, user.getName(),
                 authoritiesMapper.mapAuthorities(userDetails.getAuthorities()));
 
-
         SecurityContextHolder.getContext().setAuthentication(result);
     }
 
