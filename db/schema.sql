@@ -52,7 +52,7 @@ CREATE TABLE `item` (
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for page
@@ -106,4 +106,4 @@ CREATE TABLE `user_shop` (
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
