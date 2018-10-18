@@ -6,7 +6,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import spring.ku.boot.authentication.FingerPrintProvinder;
 import spring.ku.boot.security.KuUserDetailsService;
 import spring.ku.boot.service.UserReadService;
 
@@ -19,7 +18,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .userDetailsService(userDetailsService())
-                .authenticationProvider(fingerPrintProvinder())
                 .antMatcher("/api/**")
                 .authorizeRequests()
                 .antMatchers("/api/admin/**").hasRole("ADMIN")
@@ -49,9 +47,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new KuUserDetailsService(userReadService);
     }
 
-    @Bean
-    public FingerPrintProvinder fingerPrintProvinder(){
-        return new FingerPrintProvinder();
-    }
 
 }
