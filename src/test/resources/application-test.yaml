@@ -1,11 +1,6 @@
 server:
   port: 8090
 spring:
-  datasource:
-    driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/kuboot?useUnicode=true&amp&characterEncoding=utf-8
-    username: root
-    password: root
   redis:
       host: 127.0.0.1
       port: 6379

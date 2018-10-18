@@ -2,11 +2,13 @@ package spring.ku.boot.controller;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import spring.ku.boot.model.Article;
 import spring.ku.boot.service.ArticleReadService;
 import spring.ku.boot.service.ArticleWriteService;
 
@@ -15,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(ArticleController.class)
-public class ArticleControllerTest {
+public class ArticleControllerTest{
 
     @Autowired
     private MockMvc mockMvc;
@@ -28,7 +30,13 @@ public class ArticleControllerTest {
 
     @Test
     public void contextLoads() throws Exception {
+        Article article = new Article();
+        article.setId(2L);
+        article.setTitle("mock");
+        Mockito.when(articleReadService.findByID(2L)).thenReturn(article);
+
         String stringValue = mockMvc.perform(get("/api/article/2"))
                 .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+        System.out.println(stringValue);
     }
 }
