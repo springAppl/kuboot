@@ -45,7 +45,7 @@ public class ShopDetailPage {
         return json;
     }
 
-    @PutMapping("/{shopID}")
+    @PutMapping
     public void save(
                        @ApiParam("模板") String content) {
 

@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.ToString;
 import spring.ku.boot.dao.PageCriteria;
 
-
 import java.io.Serializable;
 
 /**

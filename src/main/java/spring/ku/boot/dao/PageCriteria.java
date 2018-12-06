@@ -35,4 +35,7 @@ public abstract class PageCriteria implements Serializable {
         offset = pageUtil.getOffset();
         limit = pageUtil.getLimit();
     }
+    public PageCriteria() {
+        this(0, 20);
+    }
 }
