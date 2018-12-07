@@ -47,7 +47,7 @@ public class ShopDetailPage {
 
     @PutMapping
     public void save(
-                       @ApiParam("模板") String content) {
+                       @ApiParam("模板") @RequestBody String content) {
 
         KuUserDetails principal = (KuUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         UserShop userShop = userShop(principal.getId());
